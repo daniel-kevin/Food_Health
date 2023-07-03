@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "531496533345",
+    "firebase_url": "https://login-signup-7b7c9-default-rtdb.firebaseio.com",
+    "project_id": "login-signup-7b7c9",
+    "storage_bucket": "login-signup-7b7c9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531496533345:android:fc5609856707f569a9d920",
+        "android_client_info": {
+          "package_name": "com.example.foodhealth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "531496533345-mc58899g5riq6ibv77ja67l9vujmjq0s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCv6jpsetEJrotlSo4cSTuBOh8MIe7_34k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "531496533345-mc58899g5riq6ibv77ja67l9vujmjq0s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

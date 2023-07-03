@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/signup"
+    tools:context=".SignupActivity">
+
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Fullname*"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:layout_marginTop="110dp"/>
+    <EditText
+        android:id="@+id/et_user"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:background="@drawable/gradle"
+        android:hint="input your name"
+        android:outlineProvider="background"
+        android:paddingLeft="10dp"
+        android:textColorHint="	#FFC0C0C0"
+        android:textColor="@color/black"
+        android:textSize="18dp"/>
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Date of Birth (dd/mm/yyy)*"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:layout_marginTop="10dp"/>
+    <EditText
+        android:id="@+id/et_date"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:background="@drawable/gradle"
+        android:hint="input your date of birth"
+        android:outlineProvider="background"
+        android:paddingLeft="10dp"
+        android:textColorHint="#FFC0C0C0"
+        android:textColor="@color/black"
+        android:textSize="18dp"/>
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Phone*"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:layout_marginTop="10dp"/>
+    <EditText
+        android:id="@+id/et_phone"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:background="@drawable/gradle"
+        android:hint="input your phone"
+        android:outlineProvider="background"
+        android:paddingLeft="10dp"
+        android:textColorHint="#FFC0C0C0"
+        android:textColor="@color/black"
+        android:textSize="18dp"/>
+
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Email*"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:layout_marginTop="10dp"/>
+    <EditText
+        android:id="@+id/et_mail"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:background="@drawable/gradle"
+        android:hint="input your email"
+        android:outlineProvider="background"
+        android:paddingLeft="10dp"
+        android:textColorHint="#FFC0C0C0"
+        android:textColor="@color/black"
+        android:textSize="18dp"/>
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Password*"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:layout_marginTop="10dp"/>
+    <EditText
+        android:id="@+id/et_pas"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:background="@drawable/gradle"
+        android:hint="Password"
+        android:textColorHint="#FFC0C0C0"
+        android:paddingLeft="10dp"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:inputType="textPassword"/>
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/c_box"
+        android:text="Show Password"/>
+
+    <Button
+        android:id="@+id/bt_sign"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:background="@drawable/gradle"
+        android:backgroundTint="#FF008000"
+        android:hint="Sign Up"
+        android:textColorHint="@color/white"
+        android:textSize="15dp"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/txt_lgn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Already have an account? Log In"
+        android:textColor="#FF0066CC"
+        android:textSize="12dp"
+        android:layout_marginTop="5dp"/>
+
+</LinearLayout>

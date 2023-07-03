@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/login">
+
+    <EditText
+        android:id="@+id/et_email"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:background="@drawable/gradle"
+        android:hint="Email"
+        android:outlineProvider="background"
+        android:paddingLeft="10dp"
+        android:textColorHint="#FFC0C0C0"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:layout_marginTop="230dp"/>
+
+    <EditText
+        android:id="@+id/et_pass"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:background="@drawable/gradle"
+        android:hint="Password"
+        android:textColorHint="#FFC0C0C0"
+        android:paddingLeft="10dp"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:inputType="textPassword"
+        android:layout_marginTop="20dp"/>
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/c_box"
+        android:text="Show Password"/>
+
+    <Button
+        android:id="@+id/bt_login"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:background="@drawable/gradle"
+        android:backgroundTint="#FF008000"
+        android:hint="Log In"
+        android:textColorHint="@color/white"
+        android:textSize="15dp"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:id="@+id/txt_signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Not yet registered? Sign Up"
+        android:textColor="#FF0066CC"
+        android:textSize="12dp"
+        android:layout_marginTop="10dp"/>
+
+</LinearLayout>
