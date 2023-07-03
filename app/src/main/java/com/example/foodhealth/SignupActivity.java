@@ -20,7 +20,6 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.foodhealth.databinding.ActivitySignupBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -35,63 +34,83 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.regex.Pattern;
 
 public class SignupActivity extends AppCompatActivity {
-    ActivitySignupBinding binding;
-    DatabaseHelper databaseHelper;
+
+    EditText edt_user, edt_date, edt_phone, edt_email,edt_pass;
+    Button btn_sign;
+    CheckBox cbox;
+    TextView txt_login;
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://login-signup-7b7c9-default-rtdb.firebaseio.com");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivitySignupBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        setContentView(R.layout.activity_signup);
 
-        databaseHelper = new DatabaseHelper(this);
+        edt_user = findViewById(R.id.et_user);
+        edt_date = findViewById(R.id.et_date);
+        edt_phone = findViewById(R.id.et_phone);
+        edt_email = findViewById(R.id.et_mail);
+        edt_pass = findViewById(R.id.et_pas);
+        btn_sign = findViewById(R.id.bt_sign);
+        txt_login = findViewById(R.id.txt_lgn);
+        cbox = findViewById(R.id.c_box);
 
-        binding.btSign.setOnClickListener(new View.OnClickListener() {
+        cbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View view) {
-                String fullname = binding.etUser.getText().toString();
-                String date = binding.etDate.getText().toString();
-                String phone = binding.etPhone.getText().toString();
-                String email = binding.etMail.getText().toString();
-                String password = binding.etPas.getText().toString();
-
-                if (email.equals("") || password.equals("") || date.equals("") || phone.equals("") || fullname.equals("")) {
-                    Toast.makeText(SignupActivity.this, "All Fields Are Mandatory", Toast.LENGTH_SHORT).show();
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (!b) {
+                    edt_pass.setTransformationMethod(PasswordTransformationMethod.getInstance());
                 } else {
-                    Boolean checkUserEmail = databaseHelper.checkEmail(email);
-                    if (checkUserEmail == false) {
-                        Boolean insert = databaseHelper.insertData(fullname, date, phone, email, password);
-                        if (insert == true) {
-                            Toast.makeText(SignupActivity.this, "Signup Succesfully", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                            startActivity(intent);
-                        } else {
-                            Toast.makeText(SignupActivity.this, "Signup Failed", Toast.LENGTH_SHORT).show();
-                        }
-                    } else {
-                        Toast.makeText(SignupActivity.this, "User Already Exists, Please Login", Toast.LENGTH_SHORT).show();
-                    }
+                    edt_pass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                 }
             }
         });
 
-        binding.txtLgn.setOnClickListener(new View.OnClickListener() {
+        txt_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
+                Intent i = new Intent(SignupActivity.this, LoginActivity.class);
+                startActivity(i);
+                finish();
             }
         });
 
-        EditText ed = findViewById(R.id.et_pas);
-        CheckBox c = findViewById(R.id.c_box);
-        c.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        btn_sign.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (!b) {
-                    ed.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            public void onClick(View view) {
+                //data
+                final String fullname = edt_user.getText().toString();
+                final String date = edt_date.getText().toString();
+                final String phone = edt_phone.getText().toString();
+                final String email = edt_email.getText().toString();
+                final String password = edt_pass.getText().toString();
+
+                if (fullname.isEmpty() || date.isEmpty() || phone.isEmpty() || email.isEmpty() || password.isEmpty()){
+                    Toast.makeText(SignupActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
                 } else {
-                    ed.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.hasChild(phone)){
+                                Toast.makeText(SignupActivity.this, "Phone is already", Toast.LENGTH_SHORT).show();
+                            } else {
+                                databaseReference.child("user").child(phone).child("fullname").setValue(fullname);
+                                databaseReference.child("user").child(phone).child("date").setValue(date);
+                                databaseReference.child("user").child(phone).child("email").setValue(email);
+                                databaseReference.child("user").child(phone).child("password").setValue(password);
+
+                               Toast.makeText(SignupActivity.this, "Register Succesfully", Toast.LENGTH_SHORT).show();
+                               startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+                               finish();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
                 }
             }
         });
