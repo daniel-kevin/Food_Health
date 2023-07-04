@@ -73,6 +73,7 @@ public class LoginActivity extends AppCompatActivity {
                      databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
                          @Override
                          public void onDataChange(@NonNull DataSnapshot snapshot) {
+                             System.out.println(snapshot);
                              if (snapshot.hasChild(phone)){
                                  String getPasword = snapshot.child(phone).child("password").getValue(String.class);
 
@@ -91,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
 //                                     startActivity(intent);
 
                                      Toast.makeText(LoginActivity.this, "Login Succesfully", Toast.LENGTH_SHORT).show();
-                                     startActivity(new Intent(LoginActivity.this, ProfilActivity.class));
+                                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                      finish();
                                  }  else {
                                      Toast.makeText(LoginActivity.this, "Password Invalid", Toast.LENGTH_SHORT).show();
