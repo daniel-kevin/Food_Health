@@ -17,9 +17,9 @@ public class DatabaseSeeder {
         // Insert new products
         ContentValues values = new ContentValues();
 
-        values.put("name", "Product 1");
-        values.put("price", 10.99);
-        values.put("image", "product1.jpg");
+        values.put("name", "Nasi Goreng");
+        values.put("price", 15000);
+        values.put("image", R.drawable.nasi_goreng);
         database.insert("products", null, values);
 
         values.put("name", "Product 2");

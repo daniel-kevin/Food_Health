@@ -23,7 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_IMAGE = "image";
 
     public DatabaseHelper(@Nullable Context context){
-        super(context,"Signup.db", null, 3);
+        super(context,"Signup.db", null, 4);
     }
 
     @Override
@@ -114,8 +114,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, product.getName());
         values.put(COLUMN_PRICE, product.getPrice());
-        values.put(COLUMN_IMAGE, product.getImagePath());
-
+//        values.put(COLUMN_IMAGE, product.getImagePath());
+        values.put(COLUMN_IMAGE,product.getImageResourceId());
         db.insert(TABLE_PRODUCTS, null, values);
         db.close();
     }
@@ -138,7 +138,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     int id = cursor.getInt(idIndex);
                     String name = cursor.getString(nameIndex);
                     double price = cursor.getDouble(priceIndex);
-                    String imagePath = cursor.getString(imageIndex);
+//                    String imagePath = cursor.getString(imageIndex);
+                    int imagePath = cursor.getInt(imageIndex);
 
                     Product product = new Product(id, name, price, imagePath);
                     productList.add(product);
