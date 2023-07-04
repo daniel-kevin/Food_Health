@@ -23,7 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_IMAGE = "image";
 
     public DatabaseHelper(@Nullable Context context){
-        super(context,"Signup.db", null, 4);
+        super(context,"Signup.db", null, 5);
     }
 
     @Override

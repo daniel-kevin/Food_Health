@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import com.google.zxing.BarcodeFormat;
@@ -29,29 +30,27 @@ public class CartActivity extends AppCompatActivity {
     private CartAdapter cartAdapter;
     private TextView totalPriceTextView;
     private ImageView qrCodeImageView;
+    private static final String KEY_CART_ITEMS = "cartItems";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
-
-        // Get the cart items from the intent
-        // Get the cart items from the intent
         Intent intent = getIntent();
         if (intent != null && intent.hasExtra("cartItems")) {
             cartItemList = (List<CartItem>) intent.getSerializableExtra("cartItems");
         } else {
             cartItemList = new ArrayList<>();
         }
-
-
-
-        // Set up the RecyclerView and CartAdapter
         recyclerView = findViewById(R.id.recyclerViewCartItems);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         cartAdapter = new CartAdapter(cartItemList, CartActivity.this);
         recyclerView.setAdapter(cartAdapter);
         totalPriceTextView = findViewById(R.id.totalPriceTextView);
         qrCodeImageView = findViewById(R.id.qrCodeImageView);
+
+        if (savedInstanceState != null && savedInstanceState.containsKey(KEY_CART_ITEMS)) {
+            cartItemList = (List<CartItem>) savedInstanceState.getSerializable(KEY_CART_ITEMS);
+        }
 
         double totalPrice = calculateTotalPrice();
         setTotalPrice(totalPrice);
@@ -115,5 +114,22 @@ public class CartActivity extends AppCompatActivity {
         totalPriceTextView.setText(totalText);
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        // Save the state of the cart items
+        outState.putSerializable(KEY_CART_ITEMS, (Serializable) cartItemList);
+    }
 
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        // Restore the state of the cart items
+        if (savedInstanceState != null && savedInstanceState.containsKey(KEY_CART_ITEMS)) {
+            cartItemList = (List<CartItem>) savedInstanceState.getSerializable(KEY_CART_ITEMS);
+            // Update the cart adapter with the restored items
+            cartAdapter.setCartItems(cartItemList);
+            cartAdapter.notifyDataSetChanged();
+        }
+    }
 }

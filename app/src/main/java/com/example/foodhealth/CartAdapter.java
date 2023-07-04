@@ -29,7 +29,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_cart, parent, false);
         return new CartViewHolder(view);
     }
-
+    public void setCartItems(List<CartItem> cartItemList) {
+        this.cartItemList = cartItemList;
+    }
     @Override
     public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
         CartItem cartItem = cartItemList.get(position);

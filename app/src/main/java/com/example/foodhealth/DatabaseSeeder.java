@@ -22,14 +22,24 @@ public class DatabaseSeeder {
         values.put("image", R.drawable.nasi_goreng);
         database.insert("products", null, values);
 
-        values.put("name", "Product 2");
-        values.put("price", 19.99);
-        values.put("image", "product2.jpg");
+        values.put("name", "Ayam Goreng");
+        values.put("price", 23000);
+        values.put("image", R.drawable.ayam);
         database.insert("products", null, values);
 
-        // Add more products as needed
+        values.put("name", "Bihun Goreng");
+        values.put("price", 14000);
+        values.put("image", R.drawable.bihun);
+        database.insert("products", null, values);
 
-        // Close the database
-//        database.close();
+        values.put("name", "Mie Goreng");
+        values.put("price", 16000);
+        values.put("image", R.drawable.mie);
+        database.insert("products", null, values);
+
+        values.put("name", "Es Teh");
+        values.put("price", 5000);
+        values.put("image", R.drawable.teh);
+        database.insert("products", null, values);
     }
 }

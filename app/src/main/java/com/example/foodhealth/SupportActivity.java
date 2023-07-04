@@ -7,12 +7,22 @@ import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class SupportActivity extends AppCompatActivity {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+public class SupportActivity extends AppCompatActivity {
+    private List<CartItem> cartItems;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_support);
+        Intent intent = getIntent();
+        if (intent != null && intent.hasExtra("cartItems")) {
+            cartItems = (List<CartItem>) intent.getSerializableExtra("cartItems");
+        } else {
+            cartItems = new ArrayList<>();
+        }
             BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation_menu);
             bottomNavigationView.setSelectedItemId(R.id.navsupp);
 
@@ -27,7 +37,9 @@ public class SupportActivity extends AppCompatActivity {
                         finish();
                         return true;
                     case R.id.navcart:
-                        startActivity(new Intent(getApplicationContext(), CartActivity.class));
+                        Intent cartIntent = new Intent(getApplicationContext(), CartActivity.class);
+                        cartIntent.putExtra("cartItems", (Serializable) cartItems);
+                        startActivity(cartIntent);
                         finish();
                         return true;
                     case R.id.navsupp:
