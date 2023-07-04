@@ -149,7 +149,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 cursor.close();
             }
         }
-
+        System.out.println(productList.size());
         return productList;
     }
 }

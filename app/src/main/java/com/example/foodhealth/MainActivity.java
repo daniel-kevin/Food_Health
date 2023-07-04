@@ -35,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         productAdapter = new ProductAdapter(productList);
         recyclerView.setAdapter(productAdapter);
-
+//        System.out.println('test');
+        System.out.println(productList);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation_menu);
         bottomNavigationView.setSelectedItemId(R.id.navhome);
 
