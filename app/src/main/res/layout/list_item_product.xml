@@ -23,13 +23,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"/>
 
         <TextView
             android:id="@+id/textViewPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:textColor="#FFFFFF"/>
 
     </LinearLayout>
 
@@ -42,8 +44,8 @@
 
         <Button
             android:id="@+id/buttonMinus"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="-"
             android:textSize="16sp" />
 
@@ -52,12 +54,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
+            android:textColor="#FFFFFF"
             android:textSize="16sp" />
 
         <Button
             android:id="@+id/buttonPlus"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="+"
             android:textSize="16sp" />
 

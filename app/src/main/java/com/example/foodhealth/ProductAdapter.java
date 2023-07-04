@@ -19,7 +19,16 @@ import com.squareup.picasso.Picasso;
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
     private List<Product> productList;
     private HashMap<Product, Integer> selectedProducts = new HashMap<>();
+    private List<CartItem> cartItems;
+    public interface OnQuantityChangedListener {
+        void onQuantityIncreased(int position);
+        void onQuantityDecreased(int position);
+    }
+    private OnQuantityChangedListener quantityChangedListener;
 
+    public void setOnQuantityChangedListener(OnQuantityChangedListener listener) {
+        this.quantityChangedListener = listener;
+    }
 
     public class ProductViewHolder extends RecyclerView.ViewHolder {
         public ImageView imageViewProduct;
@@ -41,8 +50,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     }
 
 
-    public ProductAdapter(List<Product> productList) {
+    public ProductAdapter(List<Product> productList, List<CartItem> cartItems) {
         this.productList = productList;
+        this.cartItems = cartItems;
     }
 
     @NonNull
@@ -61,28 +71,32 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.textViewPrice.setText(String.valueOf(product.getPrice()));
         holder.imageViewProduct.setImageResource(product.getImageResourceId());
         // Set the initial counter value
-        holder.textViewCounter.setText("0");
-
-        // Set button click listeners
-        holder.buttonMinus.setOnClickListener(v -> {
-            // Get the current counter value
-            int counter = Integer.parseInt(holder.textViewCounter.getText().toString());
-            if (counter > 0) {
-                counter--;
-                holder.textViewCounter.setText(String.valueOf(counter));
-            }
-        });
+        holder.textViewCounter.setText(String.valueOf(getCartItemQuantity(product.getId())));
 
         holder.buttonPlus.setOnClickListener(v -> {
-            // Get the current counter value
-            int counter = Integer.parseInt(holder.textViewCounter.getText().toString());
-            counter++;
-            holder.textViewCounter.setText(String.valueOf(counter));
+            if (quantityChangedListener != null) {
+                quantityChangedListener.onQuantityIncreased(position);
+            }
+            holder.textViewCounter.setText(String.valueOf(getCartItemQuantity(product.getId())));
+        });
+
+        holder.buttonMinus.setOnClickListener(v -> {
+            if (quantityChangedListener != null) {
+                quantityChangedListener.onQuantityDecreased(position);
+            }
+            holder.textViewCounter.setText(String.valueOf(getCartItemQuantity(product.getId())));
         });
 
 //        Picasso.get().load(product.getImagePath()).placeholder(R.drawable.placeholder).into(holder.imageViewProduct);
     }
-
+    private int getCartItemQuantity(int productId) {
+        for (CartItem cartItem : cartItems) {
+            if (cartItem.getProductId() == productId) {
+                return cartItem.getQuantity();
+            }
+        }
+        return 0;
+    }
 
     public void setProductList(List<Product> productList) {
         this.productList = productList;

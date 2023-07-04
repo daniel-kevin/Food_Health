@@ -5,29 +5,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background"
     tools:context=".CartActivity">
 
-    <RelativeLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewCartItems"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp" />
+    <TextView
+        android:id="@+id/TotalTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="8dp"
+        android:text="Total: "
+        />
+    <TextView
+        android:id="@+id/totalPriceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="8dp"
+        android:text="Total: " />
+
+    <ImageView
+        android:id="@+id/qrCodeImageView"
+        android:layout_width="202dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/fragment_container"
-            android:layout_above="@+id/bottom_navigation_menu"/>
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/bottom_navigation_menu"
-            android:layout_alignParentBottom="true"
-            android:background="?android:attr/windowBackground"
-            android:backgroundTint="@color/white"
-            app:itemTextColor="@android:color/black"
-            app:itemIconTint="@android:color/black"
-            app:menu="@menu/bottom_navigation"/>
-    </RelativeLayout>
+        android:id="@+id/bottom_navigation_menu"
+        android:background="?android:attr/windowBackground"
+        android:backgroundTint="@color/white"
+        app:itemTextColor="@android:color/black"
+        app:itemIconTint="@android:color/black"
+        app:menu="@menu/bottom_navigation"/>
 
 </LinearLayout>
