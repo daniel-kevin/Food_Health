@@ -32,18 +32,6 @@
                 android:layout_width="350dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="30dp"
-                android:src="@drawable/select"
-                android:layout_marginLeft="30dp"/>
-            <ImageView
-                android:layout_width="350dp"
-                android:layout_height="300dp"
-                android:layout_marginTop="30dp"
-                android:src="@drawable/tutorselect"
-                android:layout_marginLeft="30dp"/>
-            <ImageView
-                android:layout_width="350dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="30dp"
                 android:src="@drawable/gochart"
                 android:layout_marginLeft="30dp"/>
             <ImageView
@@ -51,20 +39,8 @@
                 android:layout_height="300dp"
                 android:layout_marginTop="30dp"
                 android:src="@drawable/tutorchart"
-                android:layout_marginLeft="30dp"/>
-            <ImageView
-                android:layout_width="350dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="30dp"
-                android:src="@drawable/gopayment"
-                android:layout_marginLeft="30dp"/>
-            <ImageView
-                android:layout_width="350dp"
-                android:layout_height="300dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="100dp"
-                android:src="@drawable/tutorpayment"
-                android:layout_marginLeft="30dp"/>
+                android:layout_marginLeft="30dp"
+                android:layout_marginBottom="100dp"/>
         </LinearLayout>
     </ScrollView>
 
