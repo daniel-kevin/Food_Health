@@ -9,31 +9,50 @@
     android:background="@drawable/background"
     tools:context=".CartActivity">
 
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:src="@drawable/headercart"/>
+
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="30dp"
+        android:background="@color/white"
+        android:src="@drawable/header" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewCartItems"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:clipToPadding="false"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp" />
-    <TextView
-        android:id="@+id/TotalTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textColor="#FFFFFF"
-        android:layout_marginTop="8dp"
-        android:text="Total: "
-        />
-    <TextView
-        android:id="@+id/totalPriceTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textColor="#FFFFFF"
-        android:layout_marginTop="8dp"
-        android:text="Total: " />
+        android:clipToPadding="false"/>
+
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="#D9D9D9"
+        android:layout_marginLeft="30dp">
+        <TextView
+            android:id="@+id/TotalTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="8dp"
+            android:text="Total "
+            android:layout_marginLeft="20dp"/>
+        <TextView
+            android:id="@+id/totalPriceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="180dp"/>
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/qrCodeImageView"
